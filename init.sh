@@ -36,8 +36,8 @@ if [ -f .env ]; then
 fi
 
 # Create .env from template and generate passwords
-echo "Creating .env from env.template..."
-cp env.template .env
+echo "Creating .env from template.env..."
+cp template.env .env
 
 # Generate short, safe hex passwords
 MYSQL_PASSWORD="$(openssl rand -hex 16)"
