@@ -10,7 +10,6 @@ Thumbs.db
 
 # Environment files
 .env
-env.*
 
 # Docker files
 docker-compose.override.yml
