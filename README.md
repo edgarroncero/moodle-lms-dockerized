@@ -32,6 +32,8 @@ docker compose build php-fpm
 
 4. **Initialize environment**
 
+sh init.sh
+
 5. **Start all containers**
 
 docker compose up -d
