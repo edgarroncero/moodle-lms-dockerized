@@ -3,6 +3,7 @@ services:
     env_file: .env
     image: mariadb:12.1.2-ubi
     container_name: db
+    hostname: db
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -21,6 +22,16 @@ services:
     image: php-8.3-fpm-moodle:latest
     pull_policy: never
     container_name: php-fpm
+    hostname: php-fpm
+    environment:
+      - MOODLE_DB_TYPE=${MOODLE_DB_TYPE}
+      - MOODLE_DB_HOST=${MOODLE_DB_HOST}
+      - MOODLE_DB_NAME=${MYSQL_USER}
+      - MOODLE_DB_USER=${MYSQL_USER}
+      - MOODLE_DB_PASS=${MYSQL_PASSWORD}
+      - MOODLE_URL=${MOODLE_URL}
+      - MOODLE_DATAROOT=${MOODLE_DATAROOT}
+
     restart: unless-stopped
     volumes:
       - ./volumes/moodle:/var/www/html
@@ -30,14 +41,17 @@ services:
       - db
 
   nginx:
-    #image: nginx:1.25-alpine
+    env_file: .env
     image: nginx:stable-alpine3.23
     container_name: nginx
+    hostname: nginx
     restart: unless-stopped
     ports:
-      - "127.0.0.1:80:80"
+      - 127.0.0.1:8080:${NGINX_PORT}
+    environment:
+      - NGINX_PORT=${NGINX_PORT}
     volumes:
       - ./volumes/moodle:/var/www/html
-      - ./volumes/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./volumes/nginx/templates/default.conf.template:/etc/nginx/templates/default.conf.template
     depends_on:
       - php-fpm
