@@ -31,4 +31,4 @@ composer.lock
 volumes/moodle/*.tgz
 volumes/moodle/*.zip
 volumes/moodledata/*.log
-
+volumes/mariadb/*
