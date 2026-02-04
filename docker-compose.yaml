@@ -32,12 +32,11 @@ services:
       - MOODLE_URL=${MOODLE_URL}
       - MOODLE_DATAROOT=${MOODLE_DATAROOT}
       - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
-
     restart: unless-stopped
     volumes:
       - ./volumes/moodle:/var/www/html
       - ./volumes/moodledata:/var/local/moodledata
-      - ./volumes/php-fpm/php.ini:/usr/local/etc/php-fpm/php.ini
+      - ./volumes/php-fpm/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
 
