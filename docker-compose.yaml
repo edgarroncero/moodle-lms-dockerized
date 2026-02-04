@@ -50,6 +50,7 @@ services:
       - 127.0.0.1:8080:${NGINX_PORT}
     environment:
       - NGINX_PORT=${NGINX_PORT}
+      - CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}
     volumes:
       - ./volumes/moodle:/var/www/html
       - ./volumes/nginx/templates/default.conf.template:/etc/nginx/templates/default.conf.template
