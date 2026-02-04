@@ -31,6 +31,7 @@ services:
       - MOODLE_DB_PASS=${MYSQL_PASSWORD}
       - MOODLE_URL=${MOODLE_URL}
       - MOODLE_DATAROOT=${MOODLE_DATAROOT}
+      - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
 
     restart: unless-stopped
     volumes:

@@ -15,7 +15,7 @@ $CFG->prefix    = getenv('MOODLE_DB_PREFIX');
 $CFG->wwwroot   = getenv('MOODLE_URL');
 $CFG->dataroot  = getenv('MOODLE_DATAROOT');
 
-$CFG->directorypermissions = 0777;
+$CFG->directorypermissions = octdec(getenv('MOODLE_DIRECTORYPERMISSIONS'));
 
 require_once(__DIR__ . '/lib/setup.php');
 
