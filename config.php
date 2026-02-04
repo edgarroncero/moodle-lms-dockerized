@@ -19,5 +19,13 @@ $CFG->directorypermissions = octdec(getenv('MOODLE_DIRECTORYPERMISSIONS'));
 
 require_once(__DIR__ . '/lib/setup.php');
 
+$CFG->preventexecpath = true;
+$CFG->pathtophp = '/usr/local/bin/php';
+$CFG->pathtodu = '/usr/bin/du';
+$CFG->aspellpath = '/usr/bin/aspell';
+$CFG->pathtodot = '/usr/bin/dot';
+$CFG->pathtogs = '/usr/bin/gs';
+$CFG->pathtopdftoppm = '/usr/bin/pdftoppm';
+$CFG->pathtopython = '/usr/bin/python3';
 // There is no php closing tag in this file,
 // // it is intentional because it prevents trailing whitespace problems!
