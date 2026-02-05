@@ -29,6 +29,7 @@ services:
       - MOODLE_URL=${MOODLE_URL}
       - MOODLE_DATAROOT=${MOODLE_DATAROOT}
       - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
+      - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
     restart: unless-stopped
     volumes:
       - ./volumes/moodle:/var/www/html
