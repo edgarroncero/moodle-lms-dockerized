@@ -2,7 +2,6 @@ services:
   db:
     env_file: .env
     image: mariadb:12.1.2-ubi
-    container_name: db
     hostname: db
     restart: unless-stopped
     environment:
@@ -21,7 +20,6 @@ services:
       context: ./php-fpm
     image: php-8.3-fpm-moodle:latest
     pull_policy: never
-    container_name: php-fpm
     hostname: php-fpm
     environment:
       - MOODLE_DB_TYPE=${MOODLE_DB_TYPE}
@@ -43,7 +41,6 @@ services:
   nginx:
     env_file: .env
     image: nginx:1.28-trixie
-    container_name: nginx
     hostname: nginx
     restart: unless-stopped
     ports:
