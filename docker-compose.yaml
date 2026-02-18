@@ -44,7 +44,7 @@ services:
     hostname: nginx
     restart: unless-stopped
     ports:
-      - 127.0.0.1:8080:${NGINX_PORT}
+      - 127.0.0.1:54808:${NGINX_PORT}
     environment:
       - NGINX_PORT=${NGINX_PORT}
       - CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}
