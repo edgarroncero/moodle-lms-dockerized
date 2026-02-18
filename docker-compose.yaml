@@ -42,7 +42,7 @@ services:
 
   nginx:
     env_file: .env
-    image: nginx:stable-alpine3.23
+    image: nginx:1.28-trixie
     container_name: nginx
     hostname: nginx
     restart: unless-stopped
