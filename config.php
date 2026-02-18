@@ -13,6 +13,7 @@ $CFG->dbpass    = getenv('MOODLE_DB_PASS');
 $CFG->prefix    = getenv('MOODLE_DB_PREFIX');
 
 $CFG->wwwroot   = getenv('MOODLE_URL');
+$CFG->sslproxy = getenv('MOODLE_SSLPROXY');
 $CFG->dataroot  = getenv('MOODLE_DATAROOT');
 
 $CFG->directorypermissions = octdec(getenv('MOODLE_DIRECTORYPERMISSIONS'));
@@ -27,5 +28,6 @@ $CFG->pathtodot = '/usr/bin/dot';
 $CFG->pathtogs = '/usr/bin/gs';
 $CFG->pathtopdftoppm = '/usr/bin/pdftoppm';
 $CFG->pathtopython = '/usr/bin/python3';
+
 // There is no php closing tag in this file,
 // // it is intentional because it prevents trailing whitespace problems!

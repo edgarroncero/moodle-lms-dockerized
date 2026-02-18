@@ -1,6 +1,5 @@
 services:
   db:
-    env_file: .env
     image: mariadb:12.1.2-ubi
     hostname: db
     restart: unless-stopped
@@ -30,6 +29,7 @@ services:
       - MOODLE_URL=${MOODLE_URL}
       - MOODLE_DATAROOT=${MOODLE_DATAROOT}
       - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
+      - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
     restart: unless-stopped
     volumes:
       - ./volumes/moodle:/var/www/html
@@ -44,7 +44,7 @@ services:
     hostname: nginx
     restart: unless-stopped
     ports:
-      - 127.0.0.1:54808:${NGINX_PORT}
+      - 127.0.0.1:${NGINX_PORT}:${NGINX_PORT}
     environment:
       - NGINX_PORT=${NGINX_PORT}
       - CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}
