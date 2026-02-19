@@ -23,7 +23,7 @@ cd moodle-lms-dockerized
 cd volumes
 wget https://packaging.moodle.org/stable405/moodle-latest-405.tgz
 tar -xvpf moodle-latest-405.tgz
-chown -R 33:33 moodle
+sudo chown -R 33:33 moodle
 cd ..
 
 2. **Build PHP-FPM container**
