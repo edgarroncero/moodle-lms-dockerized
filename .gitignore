@@ -18,17 +18,9 @@ docker-compose.override.yml
 *.pid
 
 # Docker volumes (local persistent data)
-volumes/**/moodledata/
-volumes/**/moodle/tmp/
-volumes/**/moodle/cache/
-volumes/**/moodle/*.lock
+volumes/
+!volumes/moodle/config.php
 
 # PHP / Composer
 vendor/
 composer.lock
-
-# Moodle backups / temp files
-volumes/moodle/*.tgz
-volumes/moodle/*.zip
-volumes/moodledata/*.log
-volumes/mariadb/*
