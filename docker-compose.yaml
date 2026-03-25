@@ -1,7 +1,6 @@
 services:
   db:
     image: mariadb:12.1.2-ubi
-    hostname: db
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -14,12 +13,11 @@ services:
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
 
-  php-fpm:
+  moodle-server:
     build:
-      context: ./php-fpm
-    image: php-8.3-fpm-moodle:latest
+      context: ./moodle-server
+    image: moodle-php8.3-apache-trixie
     pull_policy: never
-    hostname: php-fpm
     environment:
       - MOODLE_DB_TYPE=${MOODLE_DB_TYPE}
       - MOODLE_DB_HOST=${MOODLE_DB_HOST}
@@ -32,24 +30,10 @@ services:
       - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
       - MOODLE_REVERSEPROXY=${MOODLE_REVERSEPROXY}
     restart: unless-stopped
+    ports:
+      - 127.0.0.1:${MOODLE_PORT-8080}:80
     volumes:
       - ./volumes/moodle:/var/www/html
       - ./volumes/moodledata:/var/local/moodledata
     depends_on:
       - db
-
-  nginx:
-    env_file: .env
-    image: nginx:1.28-trixie
-    hostname: nginx
-    restart: unless-stopped
-    ports:
-      - 127.0.0.1:${NGINX_PORT}:${NGINX_PORT}
-    environment:
-      - NGINX_PORT=${NGINX_PORT}
-      #- CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE-128M}
-    volumes:
-      - ./volumes/moodle:/var/www/html
-      - ./default.conf.template:/etc/nginx/templates/default.conf.template
-    depends_on:
-      - php-fpm
