@@ -48,7 +48,7 @@ services:
       - 127.0.0.1:${NGINX_PORT}:${NGINX_PORT}
     environment:
       - NGINX_PORT=${NGINX_PORT}
-      #- CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE}
+      #- CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE-128M}
     volumes:
       - ./volumes/moodle:/var/www/html
       - ./volumes/nginx/templates/default.conf.template:/etc/nginx/templates/default.conf.template

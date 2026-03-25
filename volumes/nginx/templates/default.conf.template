@@ -4,7 +4,7 @@ server {
 	root /var/www/html;
 	index index.php;
 
-	client_max_body_size ${CLIENT_MAX_BODY_SIZE};
+	#client_max_body_size ${CLIENT_MAX_BODY_SIZE};
 
 	# MAIN ROUTER
 	location / {
