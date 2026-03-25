@@ -13,7 +13,8 @@ $CFG->dbpass    = getenv('MOODLE_DB_PASS');
 $CFG->prefix    = getenv('MOODLE_DB_PREFIX');
 
 $CFG->wwwroot   = getenv('MOODLE_URL');
-$CFG->sslproxy = getenv('MOODLE_SSLPROXY');
+$CFG->sslproxy = filter_var(getenv('MOODLE_SSLPROXY') ?: 'false', FILTER_VALIDATE_BOOLEAN);
+$CFG->reverseproxy = filter_var(getenv('MOODLE_REVERSEPROXY') ?: 'false', FILTER_VALIDATE_BOOLEAN);
 $CFG->dataroot  = getenv('MOODLE_DATAROOT');
 
 $CFG->directorypermissions = octdec(getenv('MOODLE_DIRECTORYPERMISSIONS'));

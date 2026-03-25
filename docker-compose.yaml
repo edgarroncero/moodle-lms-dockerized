@@ -30,6 +30,7 @@ services:
       - MOODLE_DATAROOT=${MOODLE_DATAROOT}
       - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
       - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
+      - MOODLE_REVERSEPROXY=${MOODLE_REVERSEPROXY}
     restart: unless-stopped
     volumes:
       - ./volumes/moodle:/var/www/html
