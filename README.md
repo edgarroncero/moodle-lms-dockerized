@@ -12,9 +12,9 @@ Before running, ensure your system has the following installed:
 
 ## Setup and Run
 
+```bash
 #1. Clone the repository
 
-```bash
 git clone https://github.com/edgarroncero/moodle-lms-dockerized.git
 cd moodle-lms-dockerized
 
@@ -37,4 +37,3 @@ sh init.sh
 #5. Start all containers
 
 docker compose up -d
-
