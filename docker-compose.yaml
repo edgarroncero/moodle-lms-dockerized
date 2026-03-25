@@ -35,7 +35,6 @@ services:
     volumes:
       - ./volumes/moodle:/var/www/html
       - ./volumes/moodledata:/var/local/moodledata
-      - ./volumes/php-fpm/php.ini:/usr/local/etc/php/php.ini
     depends_on:
       - db
 
@@ -51,6 +50,6 @@ services:
       #- CLIENT_MAX_BODY_SIZE=${CLIENT_MAX_BODY_SIZE-128M}
     volumes:
       - ./volumes/moodle:/var/www/html
-      - ./volumes/nginx/templates/default.conf.template:/etc/nginx/templates/default.conf.template
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
     depends_on:
       - php-fpm

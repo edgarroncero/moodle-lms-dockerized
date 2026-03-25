@@ -38,5 +38,7 @@ RUN apt-get update && apt-get install ghostscript python3 graphviz aspell popple
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+COPY ./php.ini /usr/local/etc/php/php.ini
+
 WORKDIR /var/www/html
 
