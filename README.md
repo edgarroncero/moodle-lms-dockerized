@@ -13,12 +13,12 @@ Before running, ensure your system has the following installed:
 ## Setup and Run
 
 ```bash
-#1. Clone the repository
+# 1. Clone the repository
 
 git clone https://github.com/edgarroncero/moodle-lms-dockerized.git
 cd moodle-lms-dockerized
 
-#2. Download Moodle
+# 2. Download Moodle
 
 cd volumes
 wget https://packaging.moodle.org/stable405/moodle-latest-405.tgz
@@ -26,14 +26,14 @@ tar -xvpf moodle-latest-405.tgz
 sudo chown -R 33:33 moodle
 cd ..
 
-#3. Build PHP-FPM container
+# 3. Build PHP-FPM container
 
 docker compose build php-fpm
 
-#4. Initialize environment
+# 4. Initialize environment
 
 sh init.sh
 
-#5. Start all containers
+# 5. Start all containers
 
 docker compose up -d
