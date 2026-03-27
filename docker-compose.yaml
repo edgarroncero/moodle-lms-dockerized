@@ -1,6 +1,6 @@
 services:
   db:
-    image: mariadb:12.1.2-ubi
+    image: docker.io/library/mariadb:12.1.2-ubi
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -8,14 +8,14 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ./volumes/mariadb:/var/lib/mysql
+      - ./volumes/db:/var/lib/mysql
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
 
-  moodle-server:
+  moodle:
     build:
-      context: ./moodle-server
+      context: ./moodle
     image: moodle-php8.3-apache-trixie
     pull_policy: never
     environment:
@@ -25,8 +25,8 @@ services:
       - MOODLE_DB_USER=${MYSQL_USER}
       - MOODLE_DB_PASS=${MYSQL_PASSWORD}
       - MOODLE_URL=${MOODLE_URL}
-      - MOODLE_DATAROOT=${MOODLE_DATAROOT}
-      - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS}
+      - MOODLE_DATAROOT=${MOODLE_DATAROOT-/var/local/moodledata}
+      - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS-0754}
       - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
       - MOODLE_REVERSEPROXY=${MOODLE_REVERSEPROXY}
     restart: unless-stopped

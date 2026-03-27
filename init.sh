@@ -21,11 +21,9 @@ ensure_dir() {
 # Create all necessary volume directories
 create_dirs() {
   echo "Ensuring volume directories..."
-  ensure_dir "$VOLUMES_DIR/mariadb"
+  ensure_dir "$VOLUMES_DIR/db"
   ensure_dir "$VOLUMES_DIR/moodle"
   ensure_dir "$VOLUMES_DIR/moodledata"
-  ensure_dir "$VOLUMES_DIR/php-fpm"
-  ensure_dir "$VOLUMES_DIR/nginx"
 }
 
 # Check for existing .env
