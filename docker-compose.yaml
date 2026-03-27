@@ -40,11 +40,8 @@ services:
       #- moodledata:/var/local/moodledata
     command: >
       sh -c "
-      apache2-foreground &&
-      while true; do
-        /usr/local/bin/php /var/www/html/admin/cli/cron.php;
-        sleep 60;
-      done
+      (while true; do php /var/www/html/admin/cli/cron.php; sleep 60; done) &
+      apache2-foreground
       "
     depends_on:
       - db
