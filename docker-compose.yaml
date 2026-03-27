@@ -19,6 +19,7 @@ services:
     image: moodle-php8.3-apache-trixie
     pull_policy: never
     environment:
+      - TZ=${TZ}
       - MOODLE_DB_TYPE=${MOODLE_DB_TYPE}
       - MOODLE_DB_HOST=${MOODLE_DB_HOST}
       - MOODLE_DB_NAME=${MYSQL_USER}
