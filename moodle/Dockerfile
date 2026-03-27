@@ -36,6 +36,11 @@ RUN docker-php-ext-install -j$(nproc) \
 
 RUN apt-get update && apt-get install ghostscript python3 graphviz aspell poppler-utils -y
 
+RUN apt-get update && apt-get install -y \
+    locales \
+    locales-all \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY ./php.ini /usr/local/etc/php/php.ini
