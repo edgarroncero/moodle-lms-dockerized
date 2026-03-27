@@ -38,6 +38,14 @@ services:
       #- moodle:/var/www/html
       - ./volumes/moodledata:/var/local/moodledata
       #- moodledata:/var/local/moodledata
+    command: >
+      sh -c "
+      apache2-foreground &&
+      while true; do
+        /usr/local/bin/php /var/www/html/admin/cli/cron.php;
+        sleep 60;
+      done
+      "
     depends_on:
       - db
 
