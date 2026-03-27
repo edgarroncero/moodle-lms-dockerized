@@ -47,3 +47,4 @@ COPY ./php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /var/www/html
 
+USER www-data:www-data
