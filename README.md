@@ -6,8 +6,6 @@ A simple Dockerized setup for running Moodle LMS locally.
 
 Before running, ensure your system has the following installed:
 
-- [Git]
-- [OpenSSL]
 - [Docker or Podman]
 - [Docker Compose or Podman Compose]
 
@@ -23,10 +21,6 @@ cd moodle-lms-dockerized
 
 docker compose build php-fpm
 
-# 3. Initialize environment
-
-sh init.sh
-
-# 4. Start all containers
+# 3. Start all containers
 
 docker compose up -d
