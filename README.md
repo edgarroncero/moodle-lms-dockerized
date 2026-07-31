@@ -21,6 +21,7 @@ cd moodle-lms-dockerized
 
 docker compose build php-fpm
 
-# 3. Start all containers
+# 3. Copy/edit the .env file and start all containers
 
+cp .env.template .env
 docker compose up -d
