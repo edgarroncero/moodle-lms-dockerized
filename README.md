@@ -17,9 +17,10 @@ Before running, ensure your system has the following installed:
 git clone https://github.com/edgarroncero/moodle-lms-dockerized.git
 cd moodle-lms-dockerized
 
-# 2. Build PHP-FPM container
+# 2. Pull and build PHP-FPM image.
 
-docker compose build php-fpm
+docker compose pull
+docker compose build
 
 # 3. Copy/edit the .env file and start all containers
 
