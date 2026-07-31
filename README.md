@@ -6,9 +6,10 @@ A simple Dockerized setup for running Moodle LMS locally.
 
 Before running, ensure your system has the following installed:
 
-- [OpenSSL](https://www.openssl.org/)
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+- [Git]
+- [OpenSSL]
+- [Docker or Podman]
+- [Docker Compose or Podman Compose]
 
 ## Setup and Run
 
@@ -18,22 +19,14 @@ Before running, ensure your system has the following installed:
 git clone https://github.com/edgarroncero/moodle-lms-dockerized.git
 cd moodle-lms-dockerized
 
-# 2. Download Moodle
-
-cd volumes
-wget https://packaging.moodle.org/stable405/moodle-latest-405.tgz
-tar -xvpf moodle-latest-405.tgz
-sudo chown -R 33:33 moodle
-cd ..
-
-# 3. Build PHP-FPM container
+# 2. Build PHP-FPM container
 
 docker compose build php-fpm
 
-# 4. Initialize environment
+# 3. Initialize environment
 
 sh init.sh
 
-# 5. Start all containers
+# 4. Start all containers
 
 docker compose up -d

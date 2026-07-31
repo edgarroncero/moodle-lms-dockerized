@@ -51,6 +51,14 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
+# Moodle
+RUN curl -L https://packaging.moodle.org/stable405/moodle-latest-405.tgz \
+    | tar -xz -C /var/www/html --strip-components=1
+
+RUN chown -R www-data:www-data /var/www/html
+
+COPY --chown=www-data:www-data ./config.php /var/www/html
+
 WORKDIR /var/www/html
 
 USER www-data:www-data
