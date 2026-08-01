@@ -2,13 +2,15 @@ services:
   db:
     image: docker.io/library/mariadb:12.1.2-ubi
     restart: unless-stopped
+    networks:
+      - internal
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ./volumes/db:/var/lib/mysql
+      - ./volumes/db:/var/lib/mysql:z
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
@@ -17,6 +19,9 @@ services:
       context: ./moodle
     image: moodle-php8.3-apache-trixie
     pull_policy: never
+    restart: unless-stopped
+    networks:
+      - internal
     environment:
       - TZ=${TZ}
       - MOODLE_DB_TYPE=${MOODLE_DB_TYPE}
@@ -29,21 +34,26 @@ services:
       - MOODLE_DIRECTORYPERMISSIONS=${MOODLE_DIRECTORYPERMISSIONS-0754}
       - MOODLE_SSLPROXY=${MOODLE_SSLPROXY}
       - MOODLE_REVERSEPROXY=${MOODLE_REVERSEPROXY}
-    restart: unless-stopped
     ports:
       - 127.0.0.1:${MOODLE_PORT-8080}:8080
     volumes:
-      - ./volumes/moodle:/var/www/html
+      - ./volumes/moodle:/var/www/html:z
       #- moodle:/var/www/html
-      - ./volumes/moodledata:/var/local/moodledata
+      - ./volumes/moodledata:/var/local/moodledata:z
       #- moodledata:/var/local/moodledata
-    command: >
-      sh -c "
-      (while true; do php /var/www/html/admin/cli/cron.php; sleep 60; done) &
+    command: |
+      sh -c '
+      (while true; do
+      su -s /bin/sh -c "php /var/www/html/admin/cli/cron.php" www-data
+      sleep 60
+      done) &
       apache2-foreground
-      "
+      '
     depends_on:
       - db
+networks:
+  internal:
+    internal: true
 #volumes:
 #  moodle:
 #  moodledata:
