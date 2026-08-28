@@ -10,7 +10,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ./volumes/db:/var/lib/mysql:z
+      - ./volumes/db:/var/lib/mysql:z,U
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
@@ -53,7 +53,6 @@ services:
       - db
 networks:
   internal:
-    internal: true
 #volumes:
 #  moodle:
 #  moodledata:
