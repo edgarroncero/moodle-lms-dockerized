@@ -27,3 +27,11 @@ docker compose build
 
 cp .env.template .env
 docker compose up -d
+```
+## Run it on production behind a reverse proxy like nginx or traefik:
+.env example
+```bash
+MOODLE_URL=https://moodle.edgarroncero.com
+MOODLE_SSLPROXY=true
+MOODLE_REVERSEPROXY=false
+```bash
