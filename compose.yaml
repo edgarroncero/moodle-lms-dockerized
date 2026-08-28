@@ -1,4 +1,16 @@
 services:
+  db-init:
+    image: docker.io/library/mariadb:12.1.2-ubi
+    user: "0:0"  # Run as root
+    volumes:
+      - ./volumes/db:/var/lib/mysql:z,U
+    command: >
+      sh -c "
+      mkdir -p /var/lib/mysql &&
+      chown -R 999:999 /var/lib/mysql &&
+      chmod 755 /var/lib/mysql
+      "
+    restart: "no"
   db:
     image: docker.io/library/mariadb:12.1.2-ubi
     restart: unless-stopped
