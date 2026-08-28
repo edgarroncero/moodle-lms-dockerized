@@ -34,4 +34,4 @@ docker compose up -d
 MOODLE_URL=https://moodle.edgarroncero.com
 MOODLE_SSLPROXY=true
 MOODLE_REVERSEPROXY=false
-```bash
+```
