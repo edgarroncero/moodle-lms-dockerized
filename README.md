@@ -14,7 +14,7 @@ Before running, ensure your system has the following installed:
 ```bash
 # 1. Clone the repository
 
-git clone https://github.com/edgarroncero/moodle-lms-dockerized.git
+git clone --branch=podman-native https://github.com/edgarroncero/moodle-lms-dockerized.git
 cd moodle-lms-dockerized
 
 # 2. Pull and build PHP-FPM image.
