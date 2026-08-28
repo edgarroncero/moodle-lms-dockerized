@@ -19,6 +19,7 @@ cd moodle-lms-dockerized
 
 # 2. Pull and build PHP-FPM image.
 
+docker image pull docker.io/library/php:8.3-apache-trixie
 docker compose pull
 docker compose build
 
